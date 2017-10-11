@@ -1,0 +1,82 @@
++ scene>settings
+resolution 1920,1080
+background-color 100,100,100
+anti-aliasing 2
+bounce-limit 16
+
++ camera>perspective
+position 13,0,1
+look-at 0,0,0
+up 1,0,0
+
+
+
++ light>point
+color 255,255,255
+intensity 1
+position -20,0,2
+
++ light>ambient
+color 255,255,255
+intensity 0.1
+
+
+
++ modal>sphere      <== Middle Ball
+shape-position 0,0,0
+shape-radius 4
+material-color 50,50,50
+material-ambient-reflectance 1
+material-diffuse-reflectance 0.2
+material-specular-reflectance 1
+material-mirror-reflectance 1
+
+
+
++ modal>sphere
+shape-position 10,10,0
+shape-radius 4
+material-color 255,0,0
+material-ambient-reflectance 1
+material-diffuse-reflectance 0.2
+material-specular-reflectance 1
+material-mirror-reflectance 1
+
++ modal>sphere
+shape-position -10,10,0
+shape-radius 4
+material-color 0,255,0
+material-ambient-reflectance 1
+material-diffuse-reflectance 0.2
+material-specular-reflectance 1
+material-mirror-reflectance 1
+
++ modal>sphere
+shape-position -10,-10,0
+shape-radius 4
+material-color 0,0,255
+material-ambient-reflectance 1
+material-diffuse-reflectance 0.2
+material-specular-reflectance 1
+material-mirror-reflectance 1
+
++ modal>sphere
+shape-position 10,-10,0
+shape-radius 4
+material-color 255,255,255
+material-ambient-reflectance 1
+material-diffuse-reflectance 0.2
+material-specular-reflectance 1
+material-mirror-reflectance 1
+
+
+
++ modal>sphere      <== Ground Ball
+shape-position 0,0,-1000
+shape-radius 996
+material-color 255,255,255
+material-ambient-reflectance 1
+material-diffuse-reflectance 0.2
+material-specular-reflectance 1
+material-mirror-reflectance 1
+
