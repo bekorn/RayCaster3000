@@ -1,4 +1,4 @@
-###How to Use
+### How to Use
 
 1. Create a input file with valid instructions.
 1. Run the exe from command line with two parameters:

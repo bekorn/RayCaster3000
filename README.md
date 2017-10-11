@@ -1,4 +1,4 @@
-##RayCaster3000
+## RayCaster3000
 You can get a cool render if you feed it with correct instructions.
 
 Things you can play with:
