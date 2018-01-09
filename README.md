@@ -18,7 +18,7 @@ I might add planes and triangles to RayCaster3100, who knows.
 
 ### Some Renders
 
-_Diffuse Lighting with Different Colors_
+_Diffuse Lighting with Multiple Lights_
 ![Specular and Reflection](INFO/diffuse.bmp)
 
 _Specular Lighting and Reflection_
