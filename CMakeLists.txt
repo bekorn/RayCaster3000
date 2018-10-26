@@ -13,6 +13,7 @@ set(SOURCE_FILES main.cpp
         Modals/Materials/Material.h
         Modals/Shapes/Shape.h
         Modals/Shapes/Sphere.h
+        Modals/Shapes/Plane.h
         Modals/Modal.h
         Lights/Light.h
         Cameras/Camera.h
@@ -28,11 +29,12 @@ set(SOURCE_FILES main.cpp
         Modals/Materials/Material.cpp
         Modals/Shapes/Shape.cpp
         Modals/Shapes/Sphere.cpp
+        Modals/Shapes/Plane.cpp
         Modals/Modal.cpp
         Lights/Light.cpp
         Cameras/Camera.cpp
         "File IO/Parser.cpp"
         "File IO/Composer.cpp"
         "File IO/Basic_IO.cpp"
-        Scenes/Settings.h Lights/AmbientLight.cpp Lights/AmbientLight.h Lights/PointLight.cpp Lights/PointLight.h)
+        Scenes/Settings.h Lights/AmbientLight.cpp Lights/AmbientLight.h Lights/PointLight.cpp Lights/PointLight.h Modals/Shapes/Disk.cpp Modals/Shapes/Disk.h)
 add_executable(RayCaster3000 ${SOURCE_FILES})
