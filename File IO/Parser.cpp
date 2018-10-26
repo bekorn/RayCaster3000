@@ -5,6 +5,8 @@
 #include <sstream>
 #include "Parser.h"
 #include "../Modals/Shapes/Sphere.h"
+#include "../Modals/Shapes/Plane.h"
+#include "../Modals/Shapes/Disk.h"
 
 using namespace std;
 
@@ -128,6 +130,37 @@ bool Parser::add_instance_of( const string &name, const vector<double> &paramete
                             parameters.at(8),
                             parameters.at(9),
                             parameters.at(10)
+                    )
+            ) );
+        }
+        else if( name == "modal>plane" ) {
+            scene.add_modal( new Modal(
+                    new Plane(
+                            Vector3(parameters.at(0), parameters.at(1), parameters.at(2)),
+                            Vector3(parameters.at(3), parameters.at(4), parameters.at(5))
+                    ),
+                    new Material(
+                            Color(parameters.at(6), parameters.at(7), parameters.at(8)),
+                            parameters.at(9),
+                            parameters.at(10),
+                            parameters.at(11),
+                            parameters.at(12)
+                    )
+            ) );
+        }
+        else if( name == "modal>disk" ) {
+            scene.add_modal( new Modal(
+                    new Disk(
+                            Vector3(parameters.at(0), parameters.at(1), parameters.at(2)),
+                            Vector3(parameters.at(3), parameters.at(4), parameters.at(5)),
+                            parameters.at(6)
+                    ),
+                    new Material(
+                            Color(parameters.at(7), parameters.at(8), parameters.at(9)),
+                            parameters.at(10),
+                            parameters.at(11),
+                            parameters.at(12),
+                            parameters.at(13)
                     )
             ) );
         }

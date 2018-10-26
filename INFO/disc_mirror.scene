@@ -1,0 +1,71 @@
++ scene>settings
+resolution 1920,1080
+background-color 100,100,100
+anti-aliasing 4
+bounce-limit 100
+
++ camera>perspective
+position -10,-20,5
+look-at 0,25,0
+up 1,0,0
+
++ light>point
+color 255,255,255
+intensity 1
+position -100,0,0
+
++ modal>sphere
+shape-position 0,0,0
+shape-radius 5
+material-color 0,255,0
+material-ambient-reflectance 1
+material-diffuse-reflectance 1
+material-specular-reflectance 1
+material-mirror-reflectance 0
+
+
+
++ modal>disk
+shape-position 0,25,0
+shape-normal 0,-1,0
+shape-radius 20
+material-color 0,0,255
+material-ambient-reflectance 0
+material-diffuse-reflectance 0.2
+material-specular-reflectance 1
+material-mirror-reflectance 1
+
++ modal>disk
+shape-position 0,26,0
+shape-normal 0,-1,0
+shape-radius 22
+material-color 0,0,255
+material-ambient-reflectance 0
+material-diffuse-reflectance 1
+material-specular-reflectance 0
+material-mirror-reflectance 0
+
++ modal>disk
+shape-position 0,-25,0
+shape-normal 0,1,0
+shape-radius 20
+material-color 255,255,0
+material-ambient-reflectance 0
+material-diffuse-reflectance 0.2
+material-specular-reflectance 1
+material-mirror-reflectance 1
+
+
++ modal>disk
+shape-position 0,-26,0
+shape-normal 0,1,0
+shape-radius 22
+material-color 255,255,0
+material-ambient-reflectance 0
+material-diffuse-reflectance 1
+material-specular-reflectance 0
+material-mirror-reflectance 0
+
+
+
+
