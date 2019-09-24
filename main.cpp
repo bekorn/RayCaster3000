@@ -1,7 +1,6 @@
+#include "Config.h"
+
 #include <iostream>
-//#include <string>
-//#include "Primitives/Vector3.h"
-//#include "Primitives/Ray.h"
 #include "Modals/Shapes/Shape.h"
 #include "Modals/Shapes/Sphere.h"
 #include "File IO/Parser.h"
@@ -19,7 +18,7 @@ int main( int argc, char *argv[] ) {
     Parser parser( argv[1] );
     if( ! parser.is_open() ) {
         return 1;
-    };
+    }
 
     Scene scene = Scene();
     if( ! parser.parse_txt_to( scene ) ) {
@@ -81,7 +80,7 @@ int main( int argc, char *argv[] ) {
 //
 //    cout << "Distance from camera to center: " << (r.origin - s.position).length << endl;
 */
+    cout << "Successful Render" << endl;
 
-    cout << "Successful Render";
     return 0;
 }

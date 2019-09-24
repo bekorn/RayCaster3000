@@ -13,7 +13,8 @@ class Shape {
 protected:
     Vector3 position;
 public:
-    Shape(const Vector3 &position);
+    explicit Shape(const Vector3 &position);
+    virtual ~Shape() = default;
 
     virtual Intersection * intersect_with( Ray ray ) = 0;
 };

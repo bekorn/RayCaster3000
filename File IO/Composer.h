@@ -9,6 +9,7 @@
 #include "../Primitives/Color.h"
 #include "../Scenes/Scene.h"
 #include "Basic_IO.h"
+#include "../Scenes/Render.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ protected:
     string invalid_file_error() override;
 public:
     Composer( char *file_path );
-    bool compose_bmp( Color *color_array[], int resolution_width, int resolution_height );
+    bool compose_bmp( Render render, int resolution_width, int resolution_height );
     // TODO: bool compose_json( Scene scene );
 };
 

@@ -5,7 +5,7 @@
 #include "math.h"
 
 class Plane : public Shape {
-private:
+protected:
     Vector3 normal;
 public:
     Plane(const Vector3 &position, const Vector3 &normal);

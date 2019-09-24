@@ -4,7 +4,7 @@
 #include "Plane.h"
 
 class Disk : public Plane {
-private:
+protected:
     double radius;
 public:
     Disk(const Vector3 &position, const Vector3 &normal, double radius);

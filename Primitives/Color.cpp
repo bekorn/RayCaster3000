@@ -4,15 +4,7 @@
 #include <cmath>
 #include "Color.h"
 
-Color::Color() {}
-
 Color::Color(double r, double g, double b) : r(r), g(g), b(b) {};
-
-//Color::Color(double r, double g, double b) {
-//    this->r = fmin( fmax( r, 0 ), 255 );
-//    this->g = fmin( fmax( g, 0 ), 255 );
-//    this->b = fmin( fmax( b, 0 ), 255 );
-//}
 
 Color& Color::limit() {
     this->r = fmin( this->r, 255 );

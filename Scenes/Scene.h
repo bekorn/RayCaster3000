@@ -12,27 +12,30 @@
 #include "Settings.h"
 #include "../Lights/AmbientLight.h"
 #include "../Lights/PointLight.h"
+#include "Render.h"
 
 using namespace std;
 
 class Scene {
 private:
     Camera camera;
-    vector<AmbientLight*> ambient_lights;
-    vector<PointLight*> point_lights;
     vector<Modal*> modals;
+    vector<PointLight*> point_lights;
+    vector<AmbientLight*> ambient_lights;
 
     Color ambient_color;
+
 public:
     Settings settings;
-    Scene();
+    Scene() = default;
+    ~Scene();
     void set_settings( const Settings &settings );
     void set_camera( const Camera &camera );
     bool add_modal( Modal *modal );
     bool add_point_light( PointLight *point_light );
     bool add_ambient_light( AmbientLight *ambient_light );
 
-    Color** capture();
+    Render capture();
     Color get_color_of( const Ray &ray, int bounces_left );
     Color get_ambient_color();
     Color get_diffuse_color_of( const Vector3 &intersection_point, const Vector3 &intersection_normal );

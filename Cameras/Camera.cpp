@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Camera.h"
 
-Camera::Camera() {}
+//Camera::Camera() {}
 
 Camera::Camera(const Vector3 &position, const Vector3 &look_at, const Vector3 &vertical_direction) :
         position(position),

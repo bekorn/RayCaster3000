@@ -6,19 +6,20 @@
 
 
 #include "Vector3.h"
+#include "../Debug/LeakCounter.h"
 //#include "../Modals/Modal.h"
 
 class Modal;
 
-class Intersection {
-public:
+struct Intersection : public Debug::LeakCounter<Intersection> {
+
     double distance;
     Vector3 point;
     Vector3 normal;
     Vector3 reflection;
     Modal *modal;
 
-    Intersection(double distance, const Vector3 &point, const Vector3 &normal, const Vector3 &reflection, Modal *modal);
+    explicit Intersection(double distance, const Vector3 &point, const Vector3 &normal, const Vector3 &reflection, Modal *modal);
 };
 
 
