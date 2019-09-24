@@ -7,11 +7,11 @@
 
 #include "Vector3.h"
 
-class Ray {
-public:
-    Vector3 origin, direction;
+struct Ray : public Debug::LeakCounter<Ray> {
 
-    Ray(const Vector3 &origin, const Vector3 &direction);
+    const Vector3 origin, direction;
+
+    explicit Ray(const Vector3 &origin, const Vector3 &direction);
 };
 
 

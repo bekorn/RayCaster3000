@@ -1,0 +1,10 @@
+//
+// Created by Berk on 3.06.2019.
+//
+
+#ifndef RAYCASTER3000_DEBUGMACROS_H
+#define RAYCASTER3000_DEBUGMACROS_H
+
+#define ANALYZE_MEMORY false
+
+#endif //RAYCASTER3000_DEBUGMACROS_H

@@ -6,12 +6,15 @@
 
 
 #include <cstdint>
+#include "../Debug/LeakCounter.h"
 
-class Color {
-public:
+struct Color : public Debug::LeakCounter<Color> {
+
     double r, g, b;
-    Color();
-    Color(double r, double g, double b);
+
+    Color() = default;
+    explicit Color(double r, double g, double b);
+
     Color& limit();
     Color operator+( const Color &color );
     void operator+=( const Color &color );

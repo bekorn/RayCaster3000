@@ -4,7 +4,23 @@
 
 #include "Scene.h"
 
-Scene::Scene() {};
+Scene::~Scene()
+{
+    for( auto modal : this->modals )
+    {
+        delete modal;
+    }
+
+    for( auto point_light : this->point_lights )
+    {
+        delete point_light;
+    }
+
+    for( auto ambient_light : this->ambient_lights )
+    {
+        delete ambient_light;
+    }
+}
 
 void Scene::set_settings( const Settings &settings ) {
     this->settings = settings;
@@ -29,10 +45,8 @@ bool Scene::add_ambient_light( AmbientLight *ambient_light ) {
     return true;
 }
 
-Color** Scene::capture() {
-
-    Color **pixels = new Color*[ this->settings.resolution_width ];
-    Color *column;
+Render Scene::capture() {
+    Render render(this->settings.resolution_width, this->settings.resolution_height);
     Color cell_color;
 
     this->ambient_color = get_ambient_color();
@@ -45,7 +59,6 @@ Color** Scene::capture() {
 
     //  Bitmap Matrix Loop
     for( int w=0 ; w<this->settings.resolution_width ; w++ ) {
-        column = new Color[ this->settings.resolution_height ];
 
         for( int h=0 ; h<this->settings.resolution_height ; h++ ) {
             cell_color = Color(0,0,0);
@@ -69,13 +82,12 @@ Color** Scene::capture() {
                 }
             }
 
-            column[h] = cell_color / total_aa_rays;
+            //  Save calculated color
+            render.set( w, h, cell_color / total_aa_rays);
         }
-
-        pixels[w] = column;
     }
 
-    return pixels;
+    return render;
 }
 
 Color Scene::get_color_of( const Ray &ray, int bounces_left ) {
@@ -134,7 +146,6 @@ Color Scene::get_diffuse_color_of( const Vector3 &intersection_point, const Vect
 }
 
 Color Scene::get_specular_color_of(const Vector3 &view_direction, const Intersection &intersection, double k) {
-
     Color color( 0, 0, 0 );
 
     for( PointLight *light : this->point_lights ) {
@@ -154,10 +165,11 @@ Intersection *Scene::closest_intersection_of( const Ray &ray ) {
     Intersection *closest_intersection = nullptr;
     Intersection *intersection;
 
-    for( Modal *modal : this->modals ) {
+    for( auto &modal : this->modals ) {
         intersection = modal->intersect_with( ray );
 
         if( intersection != nullptr && (closest_intersection == nullptr || intersection->distance < closest_intersection->distance) ) {
+            delete closest_intersection;
             closest_intersection = intersection;
         }
         else {
@@ -174,7 +186,10 @@ bool Scene::is_occluded( const Vector3 &a, const Vector3 &b ) {
 
     for( Modal *modal : this->modals ) {
 
-        if( modal->intersect_with( ray ) ) {
+        Intersection * intersection = modal->intersect_with( ray );
+
+        if( intersection ) {
+            delete intersection;
             return true;
         }
     }

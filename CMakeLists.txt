@@ -5,6 +5,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_EXE_LINKER_FLAGS "-static")
 
+if (NOT CMAKE_BUILD_TYPE MATCHES Debug)
+    add_definitions(-NDEBUG)
+endif()
+
 set(SOURCE_FILES main.cpp
         Primitives/Vector3.h
         Primitives/Color.h
@@ -36,5 +40,5 @@ set(SOURCE_FILES main.cpp
         "File IO/Parser.cpp"
         "File IO/Composer.cpp"
         "File IO/Basic_IO.cpp"
-        Scenes/Settings.h Lights/AmbientLight.cpp Lights/AmbientLight.h Lights/PointLight.cpp Lights/PointLight.h Modals/Shapes/Disk.cpp Modals/Shapes/Disk.h)
+        Scenes/Settings.h Lights/AmbientLight.cpp Lights/AmbientLight.h Lights/PointLight.cpp Lights/PointLight.h Modals/Shapes/Disk.cpp Modals/Shapes/Disk.h Debug/LeakCounter.h Scenes/Render.cpp Scenes/Render.h Debug/Config.h Config.h)
 add_executable(RayCaster3000 ${SOURCE_FILES})

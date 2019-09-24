@@ -12,7 +12,7 @@ public:
             horizontal_direction, vertical_direction;
     double view_width, view_height;
 
-    Camera();
+    Camera() = default;
 
     Camera(const Vector3 &position, const Vector3 &look_at, const Vector3 &vertical_direction);
 };

@@ -5,30 +5,31 @@
 #define RAYCASTER3000_VECTOR3_H
 
 #include <cmath>
+#include "../Debug/LeakCounter.h"
 
-class Vector3 {
+struct Vector3 : Debug::LeakCounter<Vector3&> {
 
-public:
-    static Vector3 unit_x, unit_y, unit_z;
+    const static Vector3 unit_x, unit_y, unit_z;
 
     double x, y, z, length;
 
-    Vector3();
-    Vector3(double x, double y, double z);
+    Vector3() = default;
 
-    Vector3 operator +( const Vector3 &v3 ) const;
+    explicit Vector3(double x, double y, double z);
 
-    Vector3 operator -( const Vector3 &v3 ) const;
+    Vector3 operator+(const Vector3 &v3) const;
 
-    Vector3 operator *( double n ) const;
+    Vector3 operator-(const Vector3 &v3) const;
 
-    Vector3 operator /( double n ) const;
+    Vector3 operator*(double n) const;
+
+    Vector3 operator/(double n) const;
 
     Vector3 unit_vector() const;
 
-    Vector3 cross_product( const Vector3 &v3 ) const;
+    Vector3 cross_product(const Vector3 &v3) const;
 
-    double dot_product( const Vector3 &v3 ) const;
+    double dot_product(const Vector3 &v3) const;
 };
 
 

@@ -19,7 +19,7 @@ Composer::Composer( char *file_path ) : Basic_IO(file_path) {
     }
 }
 
-bool Composer::compose_bmp( Color *color_array[], int resolution_width, int resolution_height ) {
+bool Composer::compose_bmp( Render render, int resolution_width, int resolution_height ) {
 
     FILE *f = fopen( this->file_path, "wb" );
     unsigned char *img = new unsigned char[3*resolution_width*resolution_height];
@@ -31,11 +31,13 @@ bool Composer::compose_bmp( Color *color_array[], int resolution_width, int reso
     {
         for(int j=0; j<resolution_height; j++)
         {
-            int x = i,
-                y = (resolution_height - 1) - j;
-            img[(x+y*resolution_width)*3+2] = (unsigned char)color_array[i][j].r;
-            img[(x+y*resolution_width)*3+1] = (unsigned char)color_array[i][j].g;
-            img[(x+y*resolution_width)*3+0] = (unsigned char)color_array[i][j].b;
+            int x = i;
+            int y = (resolution_height - 1) - j;
+            Color* current_color = render.get(i, j);
+
+            img[(x+y*resolution_width)*3+2] = (unsigned char)current_color->r;
+            img[(x+y*resolution_width)*3+1] = (unsigned char)current_color->g;
+            img[(x+y*resolution_width)*3+0] = (unsigned char)current_color->b;
         }
     }
 
@@ -65,8 +67,7 @@ bool Composer::compose_bmp( Color *color_array[], int resolution_width, int reso
         fwrite(bmppad,1,(size_t)(4-(resolution_width*3)%4)%4,f);
     }
 
-    delete []img;
-    delete []color_array;
+    delete[] img;
     fclose(f);
 
     return true;

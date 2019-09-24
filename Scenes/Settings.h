@@ -8,8 +8,8 @@
 
 class Settings {
 public:
-    int resolution_width;
-    int resolution_height;
+    unsigned int resolution_width;
+    unsigned int resolution_height;
     double resolution_ratio;
     double field_of_view;
     Color background_color;

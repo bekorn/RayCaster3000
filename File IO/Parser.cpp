@@ -8,8 +8,6 @@
 #include "../Modals/Shapes/Plane.h"
 #include "../Modals/Shapes/Disk.h"
 
-using namespace std;
-
 ios_base::openmode Parser::file_mode() {
     return fstream::in;
 }
@@ -38,7 +36,7 @@ bool Parser::parse_txt_to( Scene &scene ) {
     while( getline( file, line ) ) {
         line_n++;
 
-        if( line.empty() ) {
+        if( line.empty() || line[0] == 13 ) {
             if( ! current_instance_name.empty() ) {
                 if( ! add_instance_of( current_instance_name, parameters, scene, current_instance_line ) ) {
                     error_flag = true;
